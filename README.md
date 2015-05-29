@@ -45,7 +45,7 @@ schinquirer.prompt(
 
 ## API
 
-### schinquirer.prompt(schema: Object, callback: Function(answers: Object))
+#### prompt(schema: Object, callback: Function(answers: Object))
 
 Asks questions by given schema, validates the answers and then invoke callback with them.
 
