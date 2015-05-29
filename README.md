@@ -6,7 +6,7 @@
 
 ## What's up?
 
-<img align="right" alt="JSON Schema Octopus" src="/assets/jsocto.png" title="JSON Schema"/>
+<img align="right" width="250" alt="JSON Schema Octopus" src="/assets/jsocto.png" title="JSON Schema"/>
 
 Hey there! This is a simple json-schema inquirer ([json]<b>sch</b>[ema]<b>inquirer</b>), based on famous prompt [inquirer](https://github.com/SBoudrias/Inquirer.js) and [is-my-json-valid](https://github.com/mafintosh/is-my-json-valid) validator.
 
