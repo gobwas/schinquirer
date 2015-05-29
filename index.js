@@ -11,12 +11,12 @@ function prepare(schema, bread) {
         }
 
         questions.push({
-            key: bread.concat(property).join("."),
+            name: bread.concat(property).join("."),
             schema: schema
         });
 
         return questions;
-    }, {});
+    }, []);
 }
 
 exports.prompt = function(schema, callback) {
@@ -49,6 +49,8 @@ exports.prompt = function(schema, callback) {
         if (Array.isArray(choices = schema.enum)) {
             question.type = "list";
             question.choices = choices;
+        } else if (schmea.type == "boolean") {
+            question.type = "confirm";
         } else {
             question.type = "input";
         }
@@ -63,6 +65,10 @@ exports.prompt = function(schema, callback) {
             question.filter = function(value) {
                 return parseInt(value);
             };
+        }
+
+        if (typeof schema.format == "function") {
+            question.filter = schema.format;
         }
 
         questions.push(question);
