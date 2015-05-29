@@ -1,6 +1,6 @@
 {
   "name": "schinquirer",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Schema inquirer",
   "main": "index.js",
   "scripts": {
