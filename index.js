@@ -1,6 +1,5 @@
 var inquirer  = require('inquirer'),
-    validator = require("is-my-json-valid"),
-    _         = require('underscore');
+    validator = require("is-my-json-valid");
 
 function prepare(schema, bread) {
     bread = bread || [];
@@ -49,7 +48,7 @@ exports.prompt = function(schema, callback) {
         if (Array.isArray(choices = schema.enum)) {
             question.type = "list";
             question.choices = choices;
-        } else if (schmea.type == "boolean") {
+        } else if (schema.type == "boolean") {
             question.type = "confirm";
         } else {
             question.type = "input";
