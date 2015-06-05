@@ -75,7 +75,7 @@ exports.prompt = function(schema, callback) {
             question.type = "input";
         }
 
-        if (_.isObject(when = schema.when)) {
+        if (_.isPlainObject(when = schema.when)) {
             question.when = function(answers) {
                 return answers[when.key] == when.equal;
             };
