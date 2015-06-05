@@ -61,14 +61,14 @@ exports.prompt = function(schema, callback) {
             };
         }
 
-        if (schema.format == "number") {
+        if (schema.formatter == "number") {
             question.filter = function(value) {
                 return parseInt(value);
             };
         }
 
-        if (typeof schema.format == "function") {
-            question.filter = schema.format;
+        if (typeof schema.formatter == "function") {
+            question.filter = schema.formatter;
         }
 
         questions.push(_.extend({}, schema, question));

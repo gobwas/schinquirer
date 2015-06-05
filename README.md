@@ -57,5 +57,5 @@ You could use these fields additionally to your schema object:
  + message `string` - message (question) to show, if not present property name will printed;
  + default `*` - default value;
  + when `Object{key: string, equal: *}` - ask question, when some answer with `key` equal to `equal`;
- + format `string["number"]` - determine which formatter to apply for the input (available is: `number`);
- + format `Function -> *` - formatter, applying to the value, returning formatted value.
+ + formatter `string["number"]` - determine which formatter to apply for the input (available is: `number`);
+ + formatter `Function -> *` - formatter, applying to the value, returning formatted value.
