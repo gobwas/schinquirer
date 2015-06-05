@@ -1,6 +1,7 @@
 var inquirer  = require('inquirer'),
     validator = require("is-my-json-valid"),
-    _         = require("lodash");
+    _         = require("lodash"),
+    Promise   = Promise || require("promiscuous");
 
 function prepare(schema, bread) {
     bread = bread || [];
@@ -20,7 +21,26 @@ function prepare(schema, bread) {
 }
 
 exports.prompt = function(schema, callback) {
-    var questions;
+    var questions, done, deferred;
+
+    deferred = {};
+    deferred.promise = new Promise(function(resolve, reject) {
+        deferred.resolve = resolve;
+        deferred.reject = reject;
+    });
+
+    done = function(err, answers) {
+        if (err) {
+            deferred.reject(err);
+            return;
+        }
+
+        deferred.resolve(answers);
+
+        if (_.isFunction(callback)) {
+            callback(err, answers);
+        }
+    };
 
     questions = prepare(schema).reduce(function(questions, definition) {
         var choices, question, validate, when,
@@ -76,5 +96,7 @@ exports.prompt = function(schema, callback) {
         return questions;
     }, []);
 
-    inquirer.prompt(questions, callback);
+    inquirer.prompt(questions, done);
+    
+    return deferred.promise;
 };

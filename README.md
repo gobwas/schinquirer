@@ -44,9 +44,11 @@ schinquirer.prompt(
 
 ## API
 
-#### prompt(schema: Object, callback: Function(answers: Object))
+#### prompt(schema: Object [, callback: Function(answers: Object)]): Promise
 
 Asks questions by given schema, validates the answers and then invoke callback with them.
+
+Returns native `Promise` (in node < 0.12 - user tiny Promise/A+ compatible library **promiscuous**).
 
 > Note, that `schema` object is a value of `schema.properties` property.
 
