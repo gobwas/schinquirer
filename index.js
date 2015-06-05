@@ -1,10 +1,11 @@
 var inquirer  = require('inquirer'),
-    validator = require("is-my-json-valid");
+    validator = require("is-my-json-valid"),
+    _         = require("lodash");
 
 function prepare(schema, bread) {
     bread = bread || [];
 
-    return _.reduce(schema.properties, function (questions, schema, property) {
+    return _.reduce(schema, function (questions, schema, property) {
         if (schema.type == "object") {
             return questions.concat(hash(schema, bread.concat(property)));
         }
@@ -70,7 +71,7 @@ exports.prompt = function(schema, callback) {
             question.filter = schema.format;
         }
 
-        questions.push(question);
+        questions.push(_.extend({}, schema, question));
 
         return questions;
     }, []);

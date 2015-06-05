@@ -23,18 +23,17 @@ var schinquirer = require("schinquirer");
 
 schinquirer.prompt(
     {
-        properties: {
-            name: {
-                type: "string",
-                pattern: "\d-\d"
-            },
-            car: {
-                type: "string",
-                enum: ["audi", "bmw", "mercedes", "volkswagen"],
-                message: "Which car?",
-                default: "mercedes"
-            }
+        name: {
+            type: "string",
+            pattern: "\d-\d"
+        },
+        car: {
+            type: "string",
+            enum: ["audi", "bmw", "mercedes", "volkswagen"],
+            message: "Which car?",
+            default: "mercedes"
         }
+    
     },
     function(answers) {
         console.log(answers.name, "drives", answers.car);
@@ -48,6 +47,8 @@ schinquirer.prompt(
 #### prompt(schema: Object, callback: Function(answers: Object))
 
 Asks questions by given schema, validates the answers and then invoke callback with them.
+
+> Note, that `schema` object is a value of `schema.properties` property.
 
 ## Extensions to schema
 
