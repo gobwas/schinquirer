@@ -96,7 +96,9 @@ exports.prompt = function(schema, callback) {
         return questions;
     }, []);
 
-    inquirer.prompt(questions, done);
+    inquirer.prompt(questions, function(props) {
+        done(null, props);
+    });
     
     return deferred.promise;
 };
