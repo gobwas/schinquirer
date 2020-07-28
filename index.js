@@ -96,8 +96,10 @@ exports.prompt = function(schema, callback) {
         return questions;
     }, []);
 
-    inquirer.prompt(questions, function(props) {
+    inquirer.prompt(questions).then((props) => {
         done(null, props);
+    }).catch(rejected => {
+        done(rejected, null);
     });
     
     return deferred.promise;
