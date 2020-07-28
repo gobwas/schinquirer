@@ -25,7 +25,7 @@ schinquirer.prompt(
     {
         name: {
             type: "string",
-            pattern: "\d-\d"
+            pattern: "\\d-\\d"
         },
         car: {
             type: "string",
@@ -35,7 +35,7 @@ schinquirer.prompt(
         }
     
     },
-    function(answers) {
+    function(err, answers) {
         console.log(answers.name, "drives", answers.car);
     }
 );
